@@ -1,0 +1,191 @@
+<!doctype html><html lang=ko><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>움직이는 캐릭터</title><link rel=stylesheet href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style>body{margin:0;padding:26px 18px 44px;background:#fdf5ee;font-family:Pretendard,system-ui,sans-serif;color:#1f2c54}h1{font-size:21px;margin:0 0 4px}.s{font-size:13px;color:#6079bf;margin:0 0 20px;line-height:1.6}.note{background:#fff3d6;border:1px solid #ffd9a0;border-radius:14px;padding:12px 14px;font-size:12px;line-height:1.7;max-width:620px;margin:0 0 22px}.g{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;max-width:620px}figure{margin:0;background:#fff;border:1px solid #efe0d1;border-radius:22px;padding:16px 10px;text-align:center}.box svg{width:100%;max-width:130px;height:auto}figcaption b{display:block;font-size:13px;margin-top:10px}figcaption span{display:block;font-size:11px;color:#6079bf;margin-top:4px}@keyframes charFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}.anim-float{animation:charFloat 3s ease-in-out infinite}.d1{animation-delay:.35s;animation-duration:2.6s}.d2{animation-delay:.7s;animation-duration:3.6s}</style></head><body><h1>움직이는 캐릭터</h1><p class=s>첫 화면(온보딩)의 캐릭터 3인방입니다. 가만히 보시면 계속 움직여요.</p><div class=note><b>안 움직이나요?</b><br>Windows <b>설정 → 접근성 → 시각 효과 → 애니메이션 효과</b>가 꺼져 있으면 애니메이션이 표시되지 않습니다(접근성 설정을 존중하도록 만들었습니다). 켜시면 움직입니다.</div><div class=g><figure><div class="box anim-float d0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    /* 양팔 스트레칭 — 위로 쭉 폈다가 돌아오기 */
+    .arm-l { animation: stretchL 2.4s ease-in-out infinite; transform-origin: 46px 78px; }
+    .arm-r { animation: stretchR 2.4s ease-in-out infinite; transform-origin: 74px 78px; }
+    @keyframes stretchL {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(10deg); }
+    }
+    @keyframes stretchR {
+      0%, 100% { transform: rotate(0deg); }
+      50%      { transform: rotate(-10deg); }
+    }
+    /* 몸통 살짝 늘어나는 느낌 */
+    .body { animation: lift 2.4s ease-in-out infinite; transform-origin: 60px 112px; }
+    @keyframes lift {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+    .blink { animation: blink 4.5s ease-in-out infinite; transform-origin: center; }
+    @keyframes blink {
+      0%, 93%, 100% { transform: scaleY(1); }
+      96%           { transform: scaleY(0.1); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .arm-l, .arm-r, .body, .blink { animation: none; }
+    }
+  </style>
+
+  <!-- 스트레칭하는 캐릭터 -->
+  <circle cx="60" cy="86" r="46" fill="#ffe4e4"/>
+  <!-- 올린 팔 -->
+  <g class="arm-l">
+    <path d="M46 78 L30 48" stroke="#ffe0cc" stroke-width="11"/>
+    <circle cx="29" cy="45" r="6.5" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <g class="arm-r">
+    <path d="M74 78 L90 48" stroke="#ffe0cc" stroke-width="11"/>
+    <circle cx="91" cy="45" r="6.5" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <!-- 다리 -->
+  <path d="M53 116 L50 146" stroke="#f08b8b" stroke-width="12"/>
+  <path d="M67 116 L70 146" stroke="#f08b8b" stroke-width="12"/>
+  <rect x="41" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <rect x="60" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+
+  <g class="body">
+    <!-- 몸통 -->
+    <path d="M45 76c0-6 6-10 15-10s15 4 15 10v28c0 5-5 8-15 8s-15-3-15-8Z" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.6"/>
+    <!-- 목 -->
+    <path d="M60 60v8" stroke="#ffe0cc" stroke-width="9"/>
+    <!-- 머리 -->
+    <circle cx="60" cy="42" r="19" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.6"/>
+    <!-- 머리카락 + 올림머리 -->
+    <path d="M41 40c0-12 8-21 19-21s19 9 19 21c-3-5-8-8-19-8s-16 3-19 8Z" fill="#2d3142"/>
+    <circle cx="60" cy="16" r="8" fill="#2d3142" stroke="#3a3a3a" stroke-width="2"/>
+    <!-- 얼굴 -->
+    <g class="blink">
+      <circle cx="52" cy="43" r="2.4" fill="#3a3a3a"/>
+      <circle cx="68" cy="43" r="2.4" fill="#3a3a3a"/>
+    </g>
+    <path d="M56 50c2.4 2.2 5.6 2.2 8 0" stroke="#3a3a3a" stroke-width="2.2"/>
+    <circle cx="45" cy="48" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+    <circle cx="75" cy="48" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  </g>
+</svg>
+</div><figcaption><b>🏃 스트레칭</b><span>양팔을 위로 쭉 + 몸통 들썩</span></figcaption></figure><figure><div class="box anim-float d1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    /* 손 흔들기 — 어깨를 축으로 회전 */
+    .wave { animation: wave 1.4s ease-in-out infinite; transform-origin: 75px 80px; }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25%      { transform: rotate(-20deg); }
+      60%      { transform: rotate(8deg); }
+    }
+    /* 반짝임 */
+    .twinkle { animation: twinkle 1.8s ease-in-out infinite; transform-origin: center; }
+    .twinkle2 { animation: twinkle 1.8s ease-in-out infinite 0.6s; transform-origin: center; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.8); }
+      50%      { opacity: 1;    transform: scale(1.15); }
+    }
+    /* 눈 깜빡임 */
+    .blink { animation: blink 4s ease-in-out infinite; transform-origin: center; }
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96%           { transform: scaleY(0.15); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wave, .twinkle, .twinkle2, .blink { animation: none; }
+    }
+  </style>
+
+  <!-- 응원하는 캐릭터 (한 손 들고 인사) -->
+  <circle cx="60" cy="86" r="46" fill="#e5f0fb"/>
+  <!-- 다리 -->
+  <path d="M53 118 L50 146" stroke="#3a3a3a" stroke-width="12"/>
+  <path d="M67 118 L70 146" stroke="#3a3a3a" stroke-width="12"/>
+  <rect x="41" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <rect x="60" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 내린 팔 -->
+  <path d="M45 82 L36 104" stroke="#ffe0cc" stroke-width="10"/>
+  <circle cx="35" cy="107" r="6" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 든 팔 (흔들림) -->
+  <g class="wave">
+    <path d="M75 80 L88 54" stroke="#ffe0cc" stroke-width="10"/>
+    <circle cx="90" cy="50" r="7" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <!-- 몸통 -->
+  <path d="M44 78c0-6 7-10 16-10s16 4 16 10v30c0 5-6 8-16 8s-16-3-16-8Z" fill="#f08b8b" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 목 -->
+  <path d="M60 62v8" stroke="#ffe0cc" stroke-width="9"/>
+  <!-- 머리 -->
+  <circle cx="60" cy="44" r="19" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 짧은 머리 -->
+  <path d="M41 44c0-13 8-22 19-22s19 9 19 22c-2-6-5-9-8-10-4 3-8 4-11 4-5 0-10-1-13-4-3 2-5 5-6 10Z" fill="#2d3142"/>
+  <!-- 얼굴 (웃는 눈) -->
+  <g class="blink">
+    <path d="M49 45c1.6-2.4 4.4-2.4 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+    <path d="M65 45c1.6-2.4 4.4-2.4 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <path d="M55 52c2.8 2.8 6.2 2.8 9 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  <circle cx="45" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <circle cx="75" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <!-- 반짝임 -->
+  <path class="twinkle" d="M100 30l1.6 4.4 4.4 1.6-4.4 1.6L100 42l-1.6-4.4-4.4-1.6 4.4-1.6Z" fill="#ffd166"/>
+  <path class="twinkle2" d="M22 58l1.2 3.4 3.4 1.2-3.4 1.2L22 67l-1.2-3.4-3.4-1.2 3.4-1.2Z" fill="#ffd166"/>
+</svg>
+</div><figcaption><b>👋 인사</b><span>손 흔들기 + 반짝임</span></figcaption></figure><figure><div class="box anim-float d2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    /* 샐러드 그릇 살랑살랑 */
+    .bowl { animation: bowl 2.6s ease-in-out infinite; transform-origin: 31px 100px; }
+    @keyframes bowl {
+      0%, 100% { transform: rotate(-4deg) translateY(0); }
+      50%      { transform: rotate(4deg) translateY(-3px); }
+    }
+    /* 재료가 살짝 튀어오름 */
+    .veg1 { animation: hop 2.6s ease-in-out infinite; }
+    .veg2 { animation: hop 2.6s ease-in-out infinite 0.25s; }
+    .veg3 { animation: hop 2.6s ease-in-out infinite 0.5s; }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0); }
+      45%      { transform: translateY(-3.5px); }
+    }
+    .blink { animation: blink 5s ease-in-out infinite; transform-origin: center; }
+    @keyframes blink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97%           { transform: scaleY(0.15); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bowl, .veg1, .veg2, .veg3, .blink { animation: none; }
+    }
+  </style>
+
+  <!-- 건강한 식사를 든 캐릭터 -->
+  <circle cx="60" cy="86" r="46" fill="#e2f4ea"/>
+  <!-- 다리 -->
+  <path d="M53 118 L51 146" stroke="#5aa9e6" stroke-width="12"/>
+  <path d="M67 118 L69 146" stroke="#5aa9e6" stroke-width="12"/>
+  <rect x="42" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <rect x="59" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 몸통 -->
+  <path d="M44 78c0-6 7-10 16-10s16 4 16 10v30c0 5-6 8-16 8s-16-3-16-8Z" fill="#ffd166" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 왼팔 (샐러드 그릇 받침) -->
+  <path d="M46 82 L32 98" stroke="#ffe0cc" stroke-width="10"/>
+  <!-- 오른팔 -->
+  <path d="M74 82 L86 96" stroke="#ffe0cc" stroke-width="10"/>
+  <circle cx="87" cy="99" r="6" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 샐러드 그릇 -->
+  <g class="bowl">
+    <circle class="veg1" cx="27" cy="94" r="6" fill="#7ac74f"/>
+    <circle class="veg2" cx="35" cy="92" r="5" fill="#ff8b6b"/>
+    <circle class="veg3" cx="31" cy="97" r="4.5" fill="#ffd166"/>
+    <path d="M18 98h26c0 7-5.8 12-13 12s-13-5-13-12Z" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <!-- 목 -->
+  <path d="M60 62v8" stroke="#ffe0cc" stroke-width="9"/>
+  <!-- 머리 -->
+  <circle cx="60" cy="44" r="19" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 단발 머리 -->
+  <path d="M41 44c0-13 8-22 19-22s19 9 19 22v6c-2-4-3-11-4-14-4 4-10 5-15 5s-11-1-15-5c-1 3-2 10-4 14Z" fill="#4a3728"/>
+  <!-- 얼굴 -->
+  <g class="blink">
+    <path d="M49 44c1.6-2 4.4-2 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+    <path d="M65 44c1.6-2 4.4-2 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <ellipse cx="60" cy="53" rx="4" ry="3.4" fill="#3a3a3a"/>
+  <circle cx="45" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <circle cx="75" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+</svg>
+</div><figcaption><b>🥗 식단</b><span>샐러드 그릇 살랑 + 재료 통통</span></figcaption></figure></div></body></html>

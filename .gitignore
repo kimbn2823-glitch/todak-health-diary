@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+*.log
+
+# 빌드 캐시
+tsconfig.tsbuildinfo
+# 로컬 편집기 설정
+.claude/

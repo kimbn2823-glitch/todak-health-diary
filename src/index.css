@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  /* 배너의 크림 배경 톤 */
+  background-color: #fdf5ee;
+  color: #1f2c54;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 숫자 입력 화살표 정리 */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* 캐릭터 등장·둥실 애니메이션 */
+@keyframes charFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes charPopIn {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@layer utilities {
+  .anim-float {
+    animation: charFloat 3s ease-in-out infinite;
+  }
+  .anim-pop {
+    animation: charPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+  /* 여러 캐릭터가 따로 놀도록 시작 시점을 어긋나게 */
+  .delay-1 {
+    animation-delay: 0.12s;
+  }
+  .delay-2 {
+    animation-delay: 0.24s;
+  }
+  .float-slow {
+    animation-duration: 3.6s;
+  }
+  .float-fast {
+    animation-duration: 2.6s;
+  }
+}
+
+/* 접근성: 모션 최소화 설정을 존중 */
+@media (prefers-reduced-motion: reduce) {
+  .anim-float,
+  .anim-pop {
+    animation: none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-3xl bg-white shadow-soft ring-1 ring-cream-300/60;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-2xl px-4 py-2.5 text-sm font-semibold transition active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply btn bg-brand-800 text-white hover:bg-brand-900 disabled:opacity-40;
+  }
+  .btn-coral {
+    @apply btn bg-coral-500 text-white hover:bg-coral-600 disabled:opacity-40;
+  }
+  .btn-ghost {
+    @apply btn bg-cream-200 text-brand-700 hover:bg-cream-300;
+  }
+  .input {
+    @apply w-full rounded-2xl border border-cream-300 bg-white px-3.5 py-2.5 text-sm text-brand-800 outline-none transition placeholder:text-brand-300 focus:border-brand-400 focus:ring-2 focus:ring-brand-100;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-brand-500;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium;
+  }
+}

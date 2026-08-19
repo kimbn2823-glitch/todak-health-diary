@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    /* 손 흔들기 — 어깨를 축으로 회전 */
+    .wave { animation: wave 1.4s ease-in-out infinite; transform-origin: 75px 80px; }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25%      { transform: rotate(-20deg); }
+      60%      { transform: rotate(8deg); }
+    }
+    /* 반짝임 */
+    .twinkle { animation: twinkle 1.8s ease-in-out infinite; transform-origin: center; }
+    .twinkle2 { animation: twinkle 1.8s ease-in-out infinite 0.6s; transform-origin: center; }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.35; transform: scale(0.8); }
+      50%      { opacity: 1;    transform: scale(1.15); }
+    }
+    /* 눈 깜빡임 */
+    .blink { animation: blink 4s ease-in-out infinite; transform-origin: center; }
+    @keyframes blink {
+      0%, 92%, 100% { transform: scaleY(1); }
+      96%           { transform: scaleY(0.15); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .wave, .twinkle, .twinkle2, .blink { animation: none; }
+    }
+  </style>
+
+  <!-- 응원하는 캐릭터 (한 손 들고 인사) -->
+  <circle cx="60" cy="86" r="46" fill="#e5f0fb"/>
+  <!-- 다리 -->
+  <path d="M53 118 L50 146" stroke="#3a3a3a" stroke-width="12"/>
+  <path d="M67 118 L70 146" stroke="#3a3a3a" stroke-width="12"/>
+  <rect x="41" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <rect x="60" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 내린 팔 -->
+  <path d="M45 82 L36 104" stroke="#ffe0cc" stroke-width="10"/>
+  <circle cx="35" cy="107" r="6" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 든 팔 (흔들림) -->
+  <g class="wave">
+    <path d="M75 80 L88 54" stroke="#ffe0cc" stroke-width="10"/>
+    <circle cx="90" cy="50" r="7" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <!-- 몸통 -->
+  <path d="M44 78c0-6 7-10 16-10s16 4 16 10v30c0 5-6 8-16 8s-16-3-16-8Z" fill="#f08b8b" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 목 -->
+  <path d="M60 62v8" stroke="#ffe0cc" stroke-width="9"/>
+  <!-- 머리 -->
+  <circle cx="60" cy="44" r="19" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 짧은 머리 -->
+  <path d="M41 44c0-13 8-22 19-22s19 9 19 22c-2-6-5-9-8-10-4 3-8 4-11 4-5 0-10-1-13-4-3 2-5 5-6 10Z" fill="#2d3142"/>
+  <!-- 얼굴 (웃는 눈) -->
+  <g class="blink">
+    <path d="M49 45c1.6-2.4 4.4-2.4 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+    <path d="M65 45c1.6-2.4 4.4-2.4 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <path d="M55 52c2.8 2.8 6.2 2.8 9 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  <circle cx="45" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <circle cx="75" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <!-- 반짝임 -->
+  <path class="twinkle" d="M100 30l1.6 4.4 4.4 1.6-4.4 1.6L100 42l-1.6-4.4-4.4-1.6 4.4-1.6Z" fill="#ffd166"/>
+  <path class="twinkle2" d="M22 58l1.2 3.4 3.4 1.2-3.4 1.2L22 67l-1.2-3.4-3.4-1.2 3.4-1.2Z" fill="#ffd166"/>
+</svg>

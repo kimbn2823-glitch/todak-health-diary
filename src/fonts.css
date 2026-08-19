@@ -1,0 +1,8 @@
+/* 감자꽃(Gamja Flower)체 — 파란 헤더·말풍선 등 포인트용. SIL OFL 라이선스 (src/assets/fonts/OFL.txt) */
+@font-face {
+  font-family: 'Gamja Flower';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./assets/fonts/GamjaFlower-Regular.woff2') format('woff2');
+}

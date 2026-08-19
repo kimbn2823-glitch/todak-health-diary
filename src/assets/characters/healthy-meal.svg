@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 170" width="120" height="170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <style>
+    /* 샐러드 그릇 살랑살랑 */
+    .bowl { animation: bowl 2.6s ease-in-out infinite; transform-origin: 31px 100px; }
+    @keyframes bowl {
+      0%, 100% { transform: rotate(-4deg) translateY(0); }
+      50%      { transform: rotate(4deg) translateY(-3px); }
+    }
+    /* 재료가 살짝 튀어오름 */
+    .veg1 { animation: hop 2.6s ease-in-out infinite; }
+    .veg2 { animation: hop 2.6s ease-in-out infinite 0.25s; }
+    .veg3 { animation: hop 2.6s ease-in-out infinite 0.5s; }
+    @keyframes hop {
+      0%, 100% { transform: translateY(0); }
+      45%      { transform: translateY(-3.5px); }
+    }
+    .blink { animation: blink 5s ease-in-out infinite; transform-origin: center; }
+    @keyframes blink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97%           { transform: scaleY(0.15); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bowl, .veg1, .veg2, .veg3, .blink { animation: none; }
+    }
+  </style>
+
+  <!-- 건강한 식사를 든 캐릭터 -->
+  <circle cx="60" cy="86" r="46" fill="#e2f4ea"/>
+  <!-- 다리 -->
+  <path d="M53 118 L51 146" stroke="#5aa9e6" stroke-width="12"/>
+  <path d="M67 118 L69 146" stroke="#5aa9e6" stroke-width="12"/>
+  <rect x="42" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <rect x="59" y="145" width="19" height="10" rx="5" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 몸통 -->
+  <path d="M44 78c0-6 7-10 16-10s16 4 16 10v30c0 5-6 8-16 8s-16-3-16-8Z" fill="#ffd166" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 왼팔 (샐러드 그릇 받침) -->
+  <path d="M46 82 L32 98" stroke="#ffe0cc" stroke-width="10"/>
+  <!-- 오른팔 -->
+  <path d="M74 82 L86 96" stroke="#ffe0cc" stroke-width="10"/>
+  <circle cx="87" cy="99" r="6" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.4"/>
+  <!-- 샐러드 그릇 -->
+  <g class="bowl">
+    <circle class="veg1" cx="27" cy="94" r="6" fill="#7ac74f"/>
+    <circle class="veg2" cx="35" cy="92" r="5" fill="#ff8b6b"/>
+    <circle class="veg3" cx="31" cy="97" r="4.5" fill="#ffd166"/>
+    <path d="M18 98h26c0 7-5.8 12-13 12s-13-5-13-12Z" fill="#ffffff" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <!-- 목 -->
+  <path d="M60 62v8" stroke="#ffe0cc" stroke-width="9"/>
+  <!-- 머리 -->
+  <circle cx="60" cy="44" r="19" fill="#ffe0cc" stroke="#3a3a3a" stroke-width="2.6"/>
+  <!-- 단발 머리 -->
+  <path d="M41 44c0-13 8-22 19-22s19 9 19 22v6c-2-4-3-11-4-14-4 4-10 5-15 5s-11-1-15-5c-1 3-2 10-4 14Z" fill="#4a3728"/>
+  <!-- 얼굴 -->
+  <g class="blink">
+    <path d="M49 44c1.6-2 4.4-2 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+    <path d="M65 44c1.6-2 4.4-2 6 0" stroke="#3a3a3a" stroke-width="2.4"/>
+  </g>
+  <ellipse cx="60" cy="53" rx="4" ry="3.4" fill="#3a3a3a"/>
+  <circle cx="45" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+  <circle cx="75" cy="50" r="3.2" fill="#ffb3b3" opacity="0.75"/>
+</svg>
