@@ -11,6 +11,7 @@
     "standalone": "npm run build && node scripts/bundle-standalone.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "date-fns": "^3.6.0",
     "dexie": "^4.0.8",
     "dexie-react-hooks": "^1.1.7",

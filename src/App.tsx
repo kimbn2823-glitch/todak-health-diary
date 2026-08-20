@@ -3,6 +3,7 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 import { seedFoodsIfEmpty } from './db/db'
 import { initGreetingSound, initButtonSounds } from './lib/sound'
 import { requestPersistentStorage } from './lib/persist'
+import { initCloudSync } from './lib/cloudSync'
 import { useProfile } from './store/useProfile'
 import Dashboard from './pages/Dashboard'
 import Diary from './pages/Diary'
@@ -35,6 +36,8 @@ export default function App() {
     load()
     // 브라우저가 저장 공간을 회수해 기록이 사라지지 않도록 영구 저장을 요청한다.
     requestPersistentStorage()
+    // 클라우드 동기화 (설정에서 켠 경우에만 실제로 동작)
+    initCloudSync()
     initGreetingSound()
     initButtonSounds()
   }, [load])

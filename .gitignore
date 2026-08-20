@@ -9,3 +9,6 @@ dist-ssr
 tsconfig.tsbuildinfo
 # 로컬 편집기 설정
 .claude/
+
+# Vercel
+.vercel

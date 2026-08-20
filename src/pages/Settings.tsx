@@ -5,6 +5,7 @@ import { useProfile } from '../store/useProfile'
 import ProfileForm from '../components/ProfileForm'
 import PageHeader from '../components/PageHeader'
 import DataImport from '../components/DataImport'
+import CloudSyncCard from '../components/CloudSyncCard'
 import { isSoundOn, setSoundOn, playGreeting, playBarkTwice } from '../lib/sound'
 import {
   clearDraft,
@@ -135,6 +136,9 @@ export default function Settings() {
               </div>
             </dl>
           </div>
+
+          {/* 클라우드 동기화 */}
+          <CloudSyncCard />
 
           {/* 저장 상태 */}
           <div className="mx-5 mb-4 card p-4">
