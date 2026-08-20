@@ -9,7 +9,7 @@ interface Props {
 
 export default function PageHeader({ title, subtitle, right }: Props) {
   return (
-    <header className="relative mb-1 overflow-hidden px-5 pb-4 pt-7">
+    <header className="relative mb-1 overflow-hidden px-5 pb-4 pt-[calc(1.75rem+env(safe-area-inset-top))]">
       <Heartbeat
         className="pointer-events-none absolute -right-6 top-4 h-9 w-40"
         color="#efe0d1"

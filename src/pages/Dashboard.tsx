@@ -74,7 +74,7 @@ export default function Dashboard() {
   return (
     <div>
       {/* 배너풍 헤더 — 시안 배경 + 건강 일러스트 */}
-      <header className="font-cute relative overflow-hidden rounded-b-[2rem] bg-ocean-500 px-6 pb-16 pt-8 text-white">
+      <header className="font-cute relative overflow-hidden rounded-b-[2rem] bg-ocean-500 px-6 pb-16 pt-[calc(2rem+env(safe-area-inset-top))] text-white">
         <Heartbeat
           className="absolute inset-x-0 bottom-5 h-10 w-full"
           color="#ffffff"

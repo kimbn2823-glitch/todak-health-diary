@@ -54,7 +54,7 @@ export default function App() {
   }
 
   return (
-    <div className="mx-auto flex min-h-full max-w-lg flex-col pb-20">
+    <div className="mx-auto flex min-h-full max-w-lg flex-col pb-[calc(6rem+env(safe-area-inset-bottom))]">
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/diary" element={<Diary />} />
@@ -69,7 +69,7 @@ export default function App() {
       </Routes>
 
       {/* 하단 탭 바 */}
-      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-cream-300 bg-white/95 backdrop-blur">
+      <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-cream-300 bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
         <div className="mx-auto flex max-w-lg items-stretch justify-around">
           {NAV.map(({ to, label, icon: Icon, end }) => (
             <NavLink

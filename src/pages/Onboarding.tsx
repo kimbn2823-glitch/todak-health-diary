@@ -19,7 +19,7 @@ export default function Onboarding() {
   return (
     <div className="mx-auto min-h-full max-w-lg pb-10">
       {/* 배너풍 히어로 */}
-      <div className="font-cute rounded-b-[2.5rem] bg-ocean-500 px-6 pb-8 pt-9 text-center shadow-lift">
+      <div className="font-cute rounded-b-[2.5rem] bg-ocean-500 px-6 pb-8 pt-[calc(2.25rem+env(safe-area-inset-top))] text-center shadow-lift">
         <p className="text-sm font-semibold text-ocean-100">🌱 매일 기록하는 나의 식습관</p>
         <h1 className="mt-1.5 text-[28px] font-extrabold leading-snug text-white drop-shadow-sm">
           토닥토닥 건강일기

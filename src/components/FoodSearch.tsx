@@ -40,7 +40,7 @@ export default function FoodSearch({ onPick, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-40 flex items-end justify-center bg-black/30 sm:items-center">
-      <div className="flex h-[88vh] w-full max-w-lg flex-col rounded-t-3xl bg-white sm:h-[80vh] sm:rounded-3xl">
+      <div className="h-sheet flex w-full max-w-lg flex-col rounded-t-3xl bg-white sm:rounded-3xl">
         {/* 헤더 */}
         <div className="flex items-center justify-between border-b border-cream-200 px-5 py-4">
           <h3 className="text-base font-bold text-brand-800">음식 검색</h3>
@@ -142,7 +142,7 @@ export default function FoodSearch({ onPick, onClose }: Props) {
 
             {/* 선택 후 섭취량 입력 바 */}
             {selected && (
-              <div className="border-t border-cream-200 bg-white px-5 py-4">
+              <div className="border-t border-cream-200 bg-white px-5 pt-4 pb-[calc(1rem+env(safe-area-inset-bottom))]">
                 <div className="mb-3 flex items-center justify-between">
                   <div>
                     <div className="font-semibold text-brand-800">{selected.name}</div>

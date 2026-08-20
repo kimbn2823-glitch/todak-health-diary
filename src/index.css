@@ -14,6 +14,9 @@ body,
 
 body {
   margin: 0;
+  /* 아이폰 가로 모드에서 좌우 노치에 내용이 가리지 않게 */
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   /* 배너의 크림 배경 톤 */
   background-color: #fdf5ee;
   color: #1f2c54;
@@ -106,5 +109,30 @@ input[type='number'] {
   }
   .chip {
     @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium;
+  }
+}
+
+/* --- 휴대폰 화면 짤림 방지 --- */
+
+/* 바텀시트(음식 검색·운동 기록): 주소창이 접히는 모바일 브라우저에서도
+   실제 보이는 화면 높이(dvh)에 맞춘다. 미지원 브라우저는 vh로 동작. */
+.h-sheet {
+  height: 88vh;
+  height: 88dvh;
+}
+@media (min-width: 640px) {
+  .h-sheet {
+    height: 80vh;
+    height: 80dvh;
+  }
+}
+.h-sheet-sm {
+  height: 86vh;
+  height: 86dvh;
+}
+@media (min-width: 640px) {
+  .h-sheet-sm {
+    height: 78vh;
+    height: 78dvh;
   }
 }
