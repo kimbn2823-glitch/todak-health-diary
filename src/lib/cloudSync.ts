@@ -115,10 +115,15 @@ export function isValidSyncId(code: string): boolean {
   return /^TODAK(-[A-Z0-9]{4}){3}$/.test(code)
 }
 
+// 다른 기기의 코드로 «연결»한 직후 한 번은 서버 쪽 프로필을 우선한다.
+// (새 기기에서 대충 만든 임시 프로필이 원래 프로필을 덮어쓰지 않게)
+let preferRemoteProfileOnce = false
+
 /** 동기화를 켠다. 코드를 넘기면 그 코드로(다른 기기와 연결), 없으면 새 코드 발급. */
 export async function enableSync(existingCode?: string): Promise<void> {
   const code = existingCode?.trim().toUpperCase() || randomCode()
   if (!isValidSyncId(code)) throw new Error('동기화 코드 형식이 올바르지 않습니다.')
+  if (existingCode) preferRemoteProfileOnce = true
   lsSet(KEY_ID, code)
   lsSet(KEY_ON, '1')
   // 다른 코드로 갈아탄 것일 수 있으니 서버 기준점을 초기화한다.
@@ -373,12 +378,20 @@ export async function syncNow(): Promise<void> {
         server.updatedAt >= local.updatedAt
           ? mergeSnapshots(server, local)
           : mergeSnapshots(local, server)
+      if (preferRemoteProfileOnce) {
+        if (server.profile) final.profile = server.profile
+        if (server.meds.length > 0) {
+          final.meds = server.meds
+          final.medLogs = server.medLogs
+        }
+      }
       if (!sameContent(final, local)) await applySnapshot(final)
     }
 
     final.updatedAt = Math.max(final.updatedAt, Date.now())
     await pushServer(id, final)
 
+    preferRemoteProfileOnce = false
     lsSet(KEY_SERVER_STAMP, String(final.updatedAt))
     lsSet(KEY_LAST_SYNC, String(Date.now()))
     setStatus({ state: 'idle', lastSyncAt: Date.now(), message: '' })
